@@ -164,4 +164,27 @@ a {
 
 /* Estilos CSS para el efecto de hover y zoom en los iconos */
 
-  
+  /* Estilos para el título del modal */
+.modal-title {
+  font-weight: bold;
+}
+
+/* Estilos para el botón de cerrar */
+.close {
+  font-size: 1.5rem;
+}
+
+/* Estilos para el botón de guardar */
+#guardarTarifaBtn {
+  font-weight: bold;
+}
+
+/* Estilos para el fondo del header del modal */
+.modal-header {
+  border-bottom: none;
+}
+
+/* Estilos para el footer del modal */
+.modal-footer {
+  border-top: none;
+}

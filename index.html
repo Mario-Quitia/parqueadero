@@ -168,12 +168,6 @@
   </form>
 </div>
 
-
-  
-
-
-
-
 <!-- Componente de consulta -->
 <div class="container mt-4" id="consulta_componente" style="display: none;">
   <h2>Dashboard de Consulta</h2>
@@ -185,62 +179,245 @@
 </div>
 
 
-
 <!-- Componente de configuraciones -->
 <div class="container mt-4" id="configuraciones_componente" style="display: none;">
   <h2>Configuraciones del Parqueadero</h2>
 
-   <!-- Configuración de tarifas -->
-   <div class="card mt-3">
+  <!-- Configuración de tarifas -->
+  <div class="card mt-3">
     <div class="card-body">
       <h5 class="card-title">Tarifas</h5>
-      <!-- Tarifas para carros -->
-      <div class="form-group">
-        <label for="tarifa_carros_hora">Tarifa por hora para carros:</label>
-        <input type="text" id="tarifa_carros_hora" class="form-control" placeholder="Ingrese la tarifa por hora para carros" inputmode="numeric" pattern="^\d*(\.\d{0,2})?$">
+      <div class="row">
+        <div class="col">
+          <button type="button" class="btn btn-secondary square-btn" data-toggle="modal" data-target="#tarifaHoraCarrosModal">Tarifa por hora para carros</button>
+        </div>
+        
+        
+        <div class="col">
+          <button type="button" class="btn btn-secondary square-btn" data-toggle="modal" data-target="#tarifaPorDiaCarrosModal">Tarifa por día para carros</button>
+        </div>
+        
+        <div class="col">
+          <button type="button" class="btn btn-secondary square-btn" onclick="mostrarModalTarifaPorMesCarros()">Tarifa por mes para carros</button>
       </div>
-      <div class="form-group">
-        <label for="tarifa_carros_dia">Tarifa por día para carros:</label>
-        <input type="text" id="tarifa_carros_dia" class="form-control" placeholder="Ingrese la tarifa por día para carros" inputmode="numeric" pattern="^\d*(\.\d{0,2})?$">
       </div>
-      <div class="form-group">
-        <label for="tarifa_carros_mes">Tarifa por mes para carros:</label>
-        <input type="text" id="tarifa_carros_mes" class="form-control" placeholder="Ingrese la tarifa por mes para carros" inputmode="numeric" pattern="^\d*(\.\d{0,2})?$">
+      <div class="row mt-3">
+        <div class="col">
+          <button type="button" class="btn btn-secondary square-btn" onclick="mostrarModalTarifaPorHoraMotos()">Tarifa por hora para motos</button>
       </div>
-      <!-- Tarifas para motos -->
-      <div class="form-group">
-        <label for="tarifa_motos_hora">Tarifa por hora para motos:</label>
-        <input type="text" id="tarifa_motos_hora" class="form-control" placeholder="Ingrese la tarifa por hora para motos" inputmode="numeric" pattern="^\d*(\.\d{0,2})?$">
-      </div>
-      <div class="form-group">
-        <label for="tarifa_motos_dia">Tarifa por día para motos:</label>
-        <input type="text" id="tarifa_motos_dia" class="form-control" placeholder="Ingrese la tarifa por día para motos" inputmode="numeric" pattern="^\d*(\.\d{0,2})?$">
-      </div>
-      <div class="form-group">
-        <label for="tarifa_motos_mes">Tarifa por mes para motos:</label>
-        <input type="text" id="tarifa_motos_mes" class="form-control" placeholder="Ingrese la tarifa por mes para motos" inputmode="numeric" pattern="^\d*(\.\d{0,2})?$">
+      <div class="col">
+        <button type="button" class="btn btn-secondary square-btn" onclick="mostrarModalTarifaPorDiaMotos()">Tarifa por día para motos</button>
+    </div>
+        <div class="col">
+          <button type="button" class="btn btn-secondary square-btn" onclick="mostrarModalTarifaPorMesMotos()">Tarifa por mes para motos</button>
+        </div>
       </div>
     </div>
   </div>
-
 
   <!-- Configuración de espacios -->
   <div class="card mt-3">
     <div class="card-body">
       <h5 class="card-title">Espacios</h5>
-      <div class="form-group">
-        <label for="espacios_carro">Cantidad de espacios para carros:</label>
-        <input type="number" id="espacios_carro" class="form-control" placeholder="Ingrese la cantidad de espacios para carros">
+      <div class="row">
+        <div class="col">
+          <button type="button" class="btn btn-secondary square-btn">Cantidad de espacios para carros</button>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="espacios_moto">Cantidad de espacios para motos:</label>
-        <input type="number" id="espacios_moto" class="form-control" placeholder="Ingrese la cantidad de espacios para motos">
+      <div class="row mt-3">
+        <div class="col">
+          <button type="button" class="btn btn-secondary square-btn">Cantidad de espacios para motos</button>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Botón de guardar configuraciones -->
   <button class="btn btn-primary mt-3" onclick="guardarConfiguraciones()">Guardar Configuraciones</button>
+</div>
+
+
+
+
+
+<!-- Modal para ingresar tarifa por hora para carros -->
+<div class="modal fade" id="tarifaHoraCarrosModal" tabindex="-1" role="dialog" aria-labelledby="tarifaHoraCarrosModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="tarifaHoraCarrosModalLabel">Tarifa por hora para carros</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="tarifaHoraCarros">Tarifa:</label>
+            <input type="text" class="form-control" id="tarifaHoraCarros" placeholder="Ingrese la tarifa por hora para carros">
+          </div>
+          <!-- Otros campos de configuración si es necesario -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="guardarTarifaBtn">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Modal para ingresar la tarifa por día para carros -->
+<div class="modal fade" id="tarifaPorDiaCarrosModal" tabindex="-1" role="dialog" aria-labelledby="tarifaPorDiaCarrosModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tarifaPorDiaCarrosModalLabel">Tarifa por día para carros</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="tarifaPorDiaCarros">Tarifa:</label>
+            <input type="text" class="form-control" id="tarifaPorDiaCarros" placeholder="Ingrese la tarifa por día para carros">
+          </div>
+          <!-- Otros campos de configuración si es necesario -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="guardarTarifaPorDiaCarrosBtn">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="modal fade" id="tarifaPorMesCarrosModal" tabindex="-1" role="dialog" aria-labelledby="tarifaPorMesCarrosModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="tarifaPorMesCarrosModalLabel">Tarifa por mes para carros</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                      <label for="tarifaPorMesCarros">Tarifa:</label>
+                      <input type="text" class="form-control" id="tarifaPorMesCarros" placeholder="Ingrese la tarifa por mes para carros">
+                  </div>
+                  <!-- Otros campos de configuración si es necesario -->
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" id="guardarTarifaPorMesCarrosBtn" onclick="guardarTarifaPorMesCarros()">Guardar</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal para ingresar tarifa por hora para motos -->
+<div class="modal fade" id="tarifaPorHoraMotosModal" tabindex="-1" role="dialog" aria-labelledby="tarifaPorHoraMotosModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="tarifaPorHoraMotosModalLabel">Tarifa por hora para motos</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                      <label for="tarifaPorHoraMotos">Tarifa:</label>
+                      <input type="text" class="form-control" id="tarifaPorHoraMotos" placeholder="Ingrese la tarifa por hora para motos">
+                  </div>
+                  <!-- Otros campos de configuración si es necesario -->
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" id="guardarTarifaPorHoraMotosBtn">Guardar</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<!-- Modal para ingresar tarifa por día para motos -->
+<div class="modal fade" id="tarifaPorDiaMotosModal" tabindex="-1" role="dialog" aria-labelledby="tarifaPorDiaMotosModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="tarifaPorDiaMotosModalLabel">Tarifa por día para motos</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                      <label for="tarifaPorDiaMotos">Tarifa:</label>
+                      <input type="text" class="form-control" id="tarifaPorDiaMotos" placeholder="Ingrese la tarifa por día para motos">
+                  </div>
+                  <!-- Otros campos de configuración si es necesario -->
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" id="guardarTarifaPorDiaMotosBtn">Guardar</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal para ingresar tarifa por mes para motos -->
+<div class="modal fade" id="tarifaPorMesMotosModal" tabindex="-1" role="dialog" aria-labelledby="tarifaPorMesMotosModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="tarifaPorMesMotosModalLabel">Tarifa por mes para motos</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                      <label for="tarifaPorMesMotos">Tarifa:</label>
+                      <input type="text" class="form-control" id="tarifaPorMesMotos" placeholder="Ingrese la tarifa por mes para motos">
+                  </div>
+                  <!-- Otros campos de configuración si es necesario -->
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" id="guardarTarifaPorMesMotosBtn">Guardar</button>
+          </div>
+      </div>
+  </div>
 </div>
 
 

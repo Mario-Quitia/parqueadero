@@ -145,6 +145,7 @@ function buscarRegistroEntrada() {
     }
 
     // Obtener los datos del registro de entrada de la caché del navegador
+
     const registroEntradaData = JSON.parse(localStorage.getItem('registro_entrada_data'));
 
     // Verificar si se encontraron los datos
@@ -169,4 +170,240 @@ function buscarRegistroEntrada() {
     document.getElementById('registro_salida').style.display = 'block';
 }
 
+
+
+  // Modal tarifa hora por carro
+
+function mostrarModalTarifaPorDiaCarros() {
+    $('#tarifaPorDiaCarrosModal').modal('show');
+}
+
+function guardarTarifaPorHora() {
+    // Obtener el valor de la tarifa ingresada por el usuario
+    const tarifaHoraCarros = document.getElementById('tarifaHoraCarrosInput').value;
+
+    // Verificar si se ingresó un valor y si es un número válido
+    if (tarifaHoraCarros.trim() !== "" && !isNaN(tarifaHoraCarros)) {
+        // Convertir la tarifa a un número decimal
+        const tarifaDecimal = parseFloat(tarifaHoraCarros);
+
+        // Verificar si la tarifa es un número válido
+        if (!isNaN(tarifaDecimal) && tarifaDecimal >= 0) {
+            // Guardar la tarifa en el almacenamiento local
+            localStorage.setItem('tarifaHoraCarros', tarifaDecimal);
+
+            // Mostrar un mensaje de éxito
+            alert(`La tarifa por hora para carros se ha configurado correctamente: $${tarifaDecimal}`);
+
+            // Cerrar el modal
+            $('#configurarTarifaPorHoraModal').modal('hide');
+        } else {
+            // Mostrar un mensaje de error si la tarifa no es válida
+            alert("Por favor, ingrese una tarifa válida.");
+        }
+    } else {
+        // Mostrar un mensaje de error si no se ingresó ningún valor
+        alert("Por favor, ingrese la tarifa por hora para carros.");
+    }
+}
+
+document.getElementById('guardarTarifaBtn').addEventListener('click', function() {
+    // Mostrar la alerta de tarifa actualizada con éxito
+    $('#configurarTarifaPorHoraModal').modal('hide');
+
+    alert("Tarifa actualizada con éxito");
+
+    // Cerrar el modal
+  
+});
+
+
+
+// Función para guardar la tarifa por día para carros
+function guardarTarifaPorDiaCarros() {
+    // Obtener el valor de la tarifa ingresada por el usuario
+    const tarifaPorDiaCarros = document.getElementById('tarifaPorDiaCarros').value;
+
+    // Verificar si se ingresó un valor y si es un número válido
+    if (tarifaPorDiaCarros.trim() !== "" && !isNaN(tarifaPorDiaCarros)) {
+        // Convertir la tarifa a un número decimal
+        const tarifaDecimal = parseFloat(tarifaPorDiaCarros);
+
+        // Verificar si la tarifa es un número válido
+        if (!isNaN(tarifaDecimal) && tarifaDecimal >= 0) {
+            // Guardar la tarifa en el almacenamiento local o donde desees
+            // Por ejemplo, podrías guardarla en una variable, base de datos, etc.
+            // Aquí simplemente la mostraremos en un mensaje de alerta
+            alert(`La tarifa por día para carros se ha configurado correctamente: $${tarifaDecimal}`);
+
+            // Cerrar el modal
+            $('#tarifaPorDiaCarrosModal').modal('hide');
+        } else {
+            // Mostrar un mensaje de error si la tarifa no es válida
+            alert("Por favor, ingrese una tarifa válida.");
+        }
+    } else {
+        // Mostrar un mensaje de error si no se ingresó ningún valor
+        alert("Por favor, ingrese la tarifa por día para carros.");
+    }
+}
+
+// Asignar evento al botón de guardar tarifa por día para carros
+document.getElementById('guardarTarifaPorDiaCarrosBtn').addEventListener('click', guardarTarifaPorDiaCarros);
+
+
+
+
+// Función para mostrar el modal
+function mostrarModalTarifaPorMesCarros() {
+    $('#tarifaPorMesCarrosModal').modal('show');
+}
+
+// Función para guardar la tarifa por mes para carros
+function guardarTarifaPorMesCarros() {
+    // Obtener el valor de la tarifa ingresada por el usuario
+    const tarifaPorMesCarros = document.getElementById('tarifaPorMesCarros').value;
+
+    // Verificar si se ingresó un valor y si es un número válido
+    if (tarifaPorMesCarros.trim() !== "" && !isNaN(tarifaPorMesCarros)) {
+        // Convertir la tarifa a un número decimal
+        const tarifaDecimal = parseFloat(tarifaPorMesCarros);
+
+        // Verificar si la tarifa es un número válido
+        if (!isNaN(tarifaDecimal) && tarifaDecimal >= 0) {
+            // Guardar la tarifa en el almacenamiento local o donde desees
+            // Por ejemplo, podrías guardarla en una variable, base de datos, etc.
+            // Aquí simplemente la mostraremos en un mensaje de alerta
+            alert(`La tarifa por mes para carros se ha configurado correctamente: $${tarifaDecimal}`);
+
+            // Cerrar el modal
+            $('#tarifaPorMesCarrosModal').modal('hide');
+        } else {
+            // Mostrar un mensaje de error si la tarifa no es válida
+            alert("Por favor, ingrese una tarifa válida.");
+        }
+    } else {
+        // Mostrar un mensaje de error si no se ingresó ningún valor
+        alert("Por favor, ingrese la tarifa por mes para carros.");
+    }
+}
+
+
+// Función para mostrar el modal
+function mostrarModalTarifaPorHoraMotos() {
+    $('#tarifaPorHoraMotosModal').modal('show');
+}
+
+// Función para guardar la tarifa por hora para motos
+function guardarTarifaPorHoraMotos() {
+    // Obtener el valor de la tarifa ingresada por el usuario
+    const tarifaPorHoraMotos = document.getElementById('tarifaPorHoraMotos').value;
+
+    // Verificar si se ingresó un valor y si es un número válido
+    if (tarifaPorHoraMotos.trim() !== "" && !isNaN(tarifaPorHoraMotos)) {
+        // Convertir la tarifa a un número decimal
+        const tarifaDecimal = parseFloat(tarifaPorHoraMotos);
+
+        // Verificar si la tarifa es un número válido
+        if (!isNaN(tarifaDecimal) && tarifaDecimal >= 0) {
+            // Guardar la tarifa en el almacenamiento local
+            localStorage.setItem('tarifaPorHoraMotos', tarifaDecimal);
+
+            // Mostrar un mensaje de éxito
+            alert(`La tarifa por hora para motos se ha configurado correctamente: $${tarifaDecimal}`);
+
+            // Cerrar el modal
+            $('#tarifaPorHoraMotosModal').modal('hide');
+        } else {
+            // Mostrar un mensaje de error si la tarifa no es válida
+            alert("Por favor, ingrese una tarifa válida.");
+        }
+    } else {
+        // Mostrar un mensaje de error si no se ingresó ningún valor
+        alert("Por favor, ingrese la tarifa por hora para motos.");
+    }
+}
+
+// Asignar evento clic al botón "Guardar" en el modal
+document.getElementById('guardarTarifaPorHoraMotosBtn').addEventListener('click', guardarTarifaPorHoraMotos);
+
+
+
+// Función para mostrar el modal
+function mostrarModalTarifaPorDiaMotos() {
+    $('#tarifaPorDiaMotosModal').modal('show');
+}
+
+// Función para guardar la tarifa por día para motos
+function guardarTarifaPorDiaMotos() {
+    // Obtener el valor de la tarifa ingresada por el usuario
+    const tarifaPorDiaMotos = document.getElementById('tarifaPorDiaMotos').value;
+
+    // Verificar si se ingresó un valor y si es un número válido
+    if (tarifaPorDiaMotos.trim() !== "" && !isNaN(tarifaPorDiaMotos)) {
+        // Convertir la tarifa a un número decimal
+        const tarifaDecimal = parseFloat(tarifaPorDiaMotos);
+
+        // Verificar si la tarifa es un número válido
+        if (!isNaN(tarifaDecimal) && tarifaDecimal >= 0) {
+            // Guardar la tarifa en el almacenamiento local
+            localStorage.setItem('tarifaPorDiaMotos', tarifaDecimal);
+
+            // Mostrar un mensaje de éxito
+            alert(`La tarifa por día para motos se ha configurado correctamente: $${tarifaDecimal}`);
+
+            // Cerrar el modal
+            $('#tarifaPorDiaMotosModal').modal('hide');
+        } else {
+            // Mostrar un mensaje de error si la tarifa no es válida
+            alert("Por favor, ingrese una tarifa válida.");
+        }
+    } else {
+        // Mostrar un mensaje de error si no se ingresó ningún valor
+        alert("Por favor, ingrese la tarifa por día para motos.");
+    }
+}
+
+// Asignar evento clic al botón "Guardar" en el modal
+document.getElementById('guardarTarifaPorDiaMotosBtn').addEventListener('click', guardarTarifaPorDiaMotos);
+
+
+
+// Función para mostrar el modal
+function mostrarModalTarifaPorMesMotos() {
+    $('#tarifaPorMesMotosModal').modal('show');
+}
+
+// Función para guardar la tarifa por mes para motos
+function guardarTarifaPorMesMotos() {
+    // Obtener el valor de la tarifa ingresada por el usuario
+    const tarifaPorMesMotos = document.getElementById('tarifaPorMesMotos').value;
+
+    // Verificar si se ingresó un valor y si es un número válido
+    if (tarifaPorMesMotos.trim() !== "" && !isNaN(tarifaPorMesMotos)) {
+        // Convertir la tarifa a un número decimal
+        const tarifaDecimal = parseFloat(tarifaPorMesMotos);
+
+        // Verificar si la tarifa es un número válido
+        if (!isNaN(tarifaDecimal) && tarifaDecimal >= 0) {
+            // Guardar la tarifa en el almacenamiento local
+            localStorage.setItem('tarifaPorMesMotos', tarifaDecimal);
+
+            // Mostrar un mensaje de éxito
+            alert(`La tarifa por mes para motos se ha configurado correctamente: $${tarifaDecimal}`);
+
+            // Cerrar el modal
+            $('#tarifaPorMesMotosModal').modal('hide');
+        } else {
+            // Mostrar un mensaje de error si la tarifa no es válida
+            alert("Por favor, ingrese una tarifa válida.");
+        }
+    } else {
+        // Mostrar un mensaje de error si no se ingresó ningún valor
+        alert("Por favor, ingrese la tarifa por mes para motos.");
+    }
+}
+
+// Asignar evento clic al botón "Guardar" en el modal
+document.getElementById('guardarTarifaPorMesMotosBtn').addEventListener('click', guardarTarifaPorMesMotos);
 
